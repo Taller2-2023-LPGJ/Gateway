@@ -3,13 +3,11 @@ const proxy = require('express-http-proxy');
 const verifyToken = require('./tokenMiddleware');
 
 const router = Router();
-const profileRoute = proxy(env("PROFILE_URL"));
+const profileRoute = proxy(process.env.PROFILE_URL);
 
 router.use('/', (req, res, next) => {
-    const {token, user} = req.body;
-
     try{
-        verifyToken(token, user);
+        verifyToken(req.headers.token);
     } catch(err){
         res.status(err.statusCode).json({ message: err.message });
     }
