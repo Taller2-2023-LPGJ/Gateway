@@ -1,24 +1,26 @@
 const { Router } = require('express');
-const proxy = require('express-http-proxy');
+const axios = require('axios');
 
 const router = Router();
-const userRoute = proxy(process.env.USERS_URL/*, {
-    onProxyRes: async (proxyRes, req, res) => {
-        if(proxyRes.statusCode === 200 && req.path === '/signup' && req.method === 'POST'){
-            const { username } = req.body;
-            
-            const profileRes = await axios.post(process.env.PROFILE_URL + '?username=' + username);
 
-            if(profileRes.statusCode !== 200){
-                res.status(profileRes.statusCode).json({ message: profileRes.message });
-                return;
-            }         
-        }
+router.use('/', async (req, res) => {
+    console.log(req.method);
+    console.log(process.env.USERS_URL);
+    console.log(req.path);
+    console.log(process.env.USERS_URL + req.path);
 
-        res.status(proxyRes.statusCode).json({ message: proxyRes.message });
+    try{
+        const response = await axios({
+            method: req.method,
+            url: process.env.USERS_URL + req.path,
+            data: req.method != 'GET' ? req.body : {},
+        });
+
+        res.status(response.status).json(response.data);
+    } catch(err){
+        console.log(err);
+        res.status(500).json({ message: 'An unexpected error has occurred. Please try again later.' });
     }
-}*/);
-
-router.use('/', userRoute);
+});
 
 module.exports = router;
