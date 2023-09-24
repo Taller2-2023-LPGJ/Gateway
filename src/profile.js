@@ -17,8 +17,7 @@ router.use('/', async (req, res) => {
 
         res.status(response.status).json(response.data);
     } catch(err){
-        console.log(err);
-        res.status(500).json({ message: 'An unexpected error has occurred. Please try again later.' });
+        res.status(err.statusCode ?? 500).json({ message: err.message ?? 'An unexpected error has occurred. Please try again later.' });
     }
 });
 
