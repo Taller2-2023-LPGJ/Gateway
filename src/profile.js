@@ -1,18 +1,24 @@
 const { Router } = require('express');
-const proxy = require('express-http-proxy');
+const axios = require('axios');
 const verifyToken = require('./tokenMiddleware');
 
 const router = Router();
-const profileRoute = proxy(process.env.PROFILE_URL);
 
-router.use('/', (req, res, next) => {
+router.use('/', async (req, res) => {
     try{
-        verifyToken(req.headers.token);
-    } catch(err){
-        res.status(err.statusCode).json({ message: err.message });
-    }
+        const username = verifyToken(req.headers.token);
 
-    next();
-}, profileRoute);
+        const response = await axios({
+            method: req.method,
+            url: process.env.PROFILE_URL + req.path,
+            data: req.method != 'GET' ? {...req.body, username: username} : {},
+            params: req.query,
+        });
+
+        res.status(response.status).json(response.data);
+    } catch(err){
+        res.status(err.statusCode ?? 500).json({ message: err.message ?? 'An unexpected error has occurred. Please try again later.' });
+    }
+});
 
 module.exports = router;
