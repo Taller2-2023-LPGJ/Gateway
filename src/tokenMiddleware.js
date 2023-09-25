@@ -5,12 +5,15 @@ const secondsInThreeHours = 60 * 60 * 3;
 
 function verifyToken(token){
     try {
+        console.log(token);
+        console.log(secretKey);
         const {username, iat} = jwt.verify(token, secretKey);
-
+        console.log(username);
+        console.log(iat);
         if(Math.floor(Date.now() / 1000) >= iat + secondsInThreeHours){
             throw new Error('');
         }
-
+        
         return username;
     } catch (err) {
         throw new Exception('Your session has expired. Please sign in again.', 401);
