@@ -7,7 +7,7 @@ services:
     ports:
       - 3030:3030  # Adjust the ports as needed
     networks:
-      - taller2    
+      - taller2
 
 networks:
   taller2:

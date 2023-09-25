@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
-COPY .env ./
+COPY env.example ./.env
 
 RUN npm install
 
