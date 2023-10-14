@@ -16,7 +16,7 @@ router.use('/', (req, res) => {
         method: req.method,
         url: process.env.PROFILE_URL + req.path,
         data: req.method != 'GET' ? {...req.body, username: username} : {},
-        params: req.query,
+        params: req.method == 'GET' ? {...req.query, username: username} : req.query
     })
         .then((response) => {
             res.status(response.status).json(response.data);

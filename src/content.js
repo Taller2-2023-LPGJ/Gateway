@@ -6,18 +6,19 @@ const router = Router();
 
 router.use('/', async (req, res) => {
     try{
-        //var username = verifyToken(req.headers.token);
+        //const username = verifyToken(req.headers.token);
+
+        const username = "gstfrenkel";
 
         const response = await axios({
             method: req.method,
-            url: process.env.INTERACTION_URL + req.path,
-            data: req.method != 'GET' ? {...req.body, username: 'gstfrenkel'} : {},
-            params: req.query,
+            url: process.env.CONTENT_URL + req.path,
+            data: req.method != 'GET' ? {...req.body, username: username} : {},
+            params: req.method == 'GET' ? {...req.query, username: username} : req.query
         });
 
         res.status(response.status).json(response.data);
     } catch(err){
-        console.log(err);
         if(axios.isAxiosError(err))
             res.status(err.response.status).json(err.response.data);
         else
