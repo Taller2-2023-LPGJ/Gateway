@@ -10,11 +10,13 @@ router.use('/', (req, res) => {
         data: req.method != 'GET' ? req.body : {},
         params: req.query,
         headers: {
-            'token': req.headers.token
+            'token': req.headers ? req.headers.token : null
         }
     }).then((response) => {
+        console.log();
         res.status(response.status).json(response.data);
     }).catch((err)=>{
+        console.log(err);
         res.status(err.response.status).json(err.response.data);
     });
 });
