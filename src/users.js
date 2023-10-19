@@ -16,7 +16,6 @@ router.use('/', (req, res) => {
         console.log();
         res.status(response.status).json(response.data);
     }).catch((err)=>{
-        console.log(err);
         res.status(err.response.status).json(err.response.data);
     });
 });
