@@ -8,7 +8,10 @@ router.use('/', (req, res) => {
         method: req.method,
         url: process.env.USERS_URL + req.path,
         data: req.method != 'GET' ? req.body : {},
-        params: req.query
+        params: req.query,
+        headers: {
+            'token': req.headers.token
+        }
     }).then((response) => {
         res.status(response.status).json(response.data);
     }).catch((err)=>{
