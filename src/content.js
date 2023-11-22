@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const axios = require('axios');
-const verifyToken = require('./tokenMiddleware');
+const verifyToken = require('./middleware/tokenMiddleware');
 const middleware = require('./middleware/middleware');
 
 const router = Router();
