@@ -5,7 +5,7 @@ const verifyToken = require('./middleware');
 const router = Router();
 
 function requiresTokenValidation(path){
-    return(
+    return (
         !path.startsWith('/admins/signin') && (
             path.startsWith('/admins') ||
             path.startsWith('/token') ||
@@ -14,12 +14,11 @@ function requiresTokenValidation(path){
     );
 }
 
-router.use('/', (req, res) => {
+router.use('/', async (req, res) => {
     let username = ''
 
-    if(requiresTokenValidation(req.path)){
-        username = verifyToken(req.headers.token);
-    }
+    if(requiresTokenValidation(req.path))
+        username = await verifyToken(req.headers.token);
 
     axios({
         method: req.method,

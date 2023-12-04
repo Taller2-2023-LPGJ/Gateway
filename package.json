@@ -4,8 +4,8 @@
   "description": "Dedicado al intermanejo de Requests entre microservicios",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+		"test": "jest --coverage"
+	},
   "author": "gstfrenkel",
   "license": "ISC",
   "dependencies": {
