@@ -11,7 +11,7 @@ function verifyToken(token){
         if(Math.floor(Date.now() / 1000) >= iat + secondsInThreeHours)
             throw new Error('');
 
-        const user = axios.get(`${process.env.USERS_URL}/blocked?${username}`);
+        const user = axios.get(`${process.env.USERS_URL}/blocked?username=${username}`);
 
         if(user.blocked)
             throw new Exception('Your account has been blocked.', 403);
