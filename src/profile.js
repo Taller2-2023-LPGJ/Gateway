@@ -1,11 +1,10 @@
 const { Router } = require('express');
 const axios = require('axios');
-const verifyToken = require('./middleware/tokenMiddleware');
-const middleware = require('./middleware/middleware');
+const verifyToken = require('./middleware');
 
 const router = Router();
 
-router.use('/', middleware.verifyAuth ,(req, res) => {
+router.use('/', (req, res) => {
     try{
         var username = verifyToken(req.headers.token);
     } catch(err){

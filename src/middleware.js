@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const Exception = require('../exception');
+const axios = require('axios');
+const Exception = require('./exception');
 const secretKey = process.env.TOKEN_SECRET_KEY;
 const secondsInThreeHours = 60 * 60 * 3;
 
@@ -7,9 +8,13 @@ function verifyToken(token){
     try {
         const {username, iat} = jwt.verify(token, secretKey);
         
-        if(Math.floor(Date.now() / 1000) >= iat + secondsInThreeHours){
+        if(Math.floor(Date.now() / 1000) >= iat + secondsInThreeHours)
             throw new Error('');
-        }
+
+        const user = axios.get(`${process.env.USERS_URL}/blocked?${username}`);
+
+        if(user.blocked)
+            throw new Exception('Your account has been blocked.', 403);
         
         return username;
     } catch (err) {
