@@ -2,7 +2,6 @@ const verifyToken = require('../src/middleware');
 const {axiosMock} = require('./singleton');
 const jwt = require('jsonwebtoken');
 const express = require('express');
-const Exception = require('../src/exception');
 const app = express();
 
 app.use(express.json());
@@ -59,10 +58,6 @@ describe('Token', () => {
         } catch(_){
             expect(true).toEqual(true);
         }
-
-        /*expect(async () => {
-            await verifyToken(token, "tp2");
-        }).toThrow(Exception);*/
     });
 
     test('Expired', async () => {
@@ -78,9 +73,5 @@ describe('Token', () => {
         } catch(_){
             expect(true).toEqual(true);
         }
-
-        /*expect(async () => {
-            await verifyToken(token, "tp2");
-        }).toThrow(Exception);*/
     });
 });
