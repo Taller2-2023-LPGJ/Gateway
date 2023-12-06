@@ -6,7 +6,7 @@ const router = Router();
 
 router.use('/', async (req, res) => {
     try{
-        const username = verifyToken(req.headers.token);
+        const username = await verifyToken(req.headers.token);
 
         const response = await axios({
             method: req.method,

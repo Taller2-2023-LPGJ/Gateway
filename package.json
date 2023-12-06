@@ -4,12 +4,12 @@
   "description": "Dedicado al intermanejo de Requests entre microservicios",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+		"test": "jest --coverage"
+	},
   "author": "gstfrenkel",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.0",
+    "axios": "latest",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
