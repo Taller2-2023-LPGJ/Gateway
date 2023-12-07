@@ -1,0 +1,27 @@
+name: workflow
+
+on:
+  push:
+    branches:
+      - develop 
+jobs:
+
+  devflow:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@develop
+      
+    - uses: okteto/login@snap-msg-auth-gateway-julianquino
+      with:
+        token: igWA6gv8kuL7LB475ANcEwCuqT7nQlWcJS6h5NkaiCihbHcx
+    
+    - name: "Activate personal namespace"
+      uses: okteto/namespace@snap-msg-auth-gateway-julianquino
+      with:
+        name: julianquino
+
+    - name: "Create deployment"
+      uses: okteto/apply@develop
+      with:
+        manifest: /k8s/deployment.yaml
