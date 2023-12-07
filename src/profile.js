@@ -22,7 +22,10 @@ router.use('/', async (req, res) => {
 
         res.status(result.status).json(result.data);
     } catch(err){
-        res.status(err.response.status).json(err.response.data);
+        if(axios.isAxiosError(err))
+            res.status(err.response.status).json(err.response.data);
+        else
+            res.status(err.statusCode ?? 500).json({ message: err.message ?? 'An unexpected error has occurred. Please try again later.' });
     };
 });
 

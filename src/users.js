@@ -25,16 +25,21 @@ router.use('/', async (req, res) => {
         query.username = username;
     }
 
-    axios({
-        method: req.method,
-        url: process.env.USERS_URL + req.path,
-        data: req.method != 'GET' ? body : {},
-        params: req.method == 'GET' ? query : {},
-    }).then((response) => {
-        res.status(response.status).json(response.data);
-    }).catch((err)=>{
-        res.status(err.response.status).json(err.response.data);
-    });
+    try{
+        const result = axios({
+            method: req.method,
+            url: process.env.USERS_URL + req.path,
+            data: req.method != 'GET' ? body : {},
+            params: req.method == 'GET' ? query : {},
+        });
+
+        res.status(result.status).json(result.data);
+    } catch(err){
+        if(axios.isAxiosError(err))
+            res.status(err.response.status).json(err.response.data);
+        else
+            res.status(err.statusCode ?? 500).json({ message: err.message ?? 'An unexpected error has occurred. Please try again later.' });
+    };
 });
 
 module.exports = router;
