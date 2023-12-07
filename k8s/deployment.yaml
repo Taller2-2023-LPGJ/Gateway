@@ -16,4 +16,4 @@ spec:
       - name: t2-gateway
         image: gateway-t2-gateway
         ports:
-        - containerPort: 3030
+        - containerPort: 8080
