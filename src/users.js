@@ -26,7 +26,7 @@ router.use('/', async (req, res) => {
     }
 
     try{
-        const result = axios({
+        const result = await axios({
             method: req.method,
             url: process.env.USERS_URL + req.path,
             data: req.method != 'GET' ? body : {},
