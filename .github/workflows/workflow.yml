@@ -14,12 +14,7 @@ jobs:
     - uses: okteto/context@latest
       with:
         token: igWA6gv8kuL7LB475ANcEwCuqT7nQlWcJS6h5NkaiCihbHcx
-    
-    - name: "Activate Namespace"
-      uses: okteto/namespace@latest
-      with:
-        name: julianquino
-    
+
     - name: "Deploy application"
       uses: okteto/apply@latest
       with:
