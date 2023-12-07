@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
-      uses: actions/checkout@develop
+      uses: actions/checkout@master
       
     - uses: okteto/login@snap-msg-auth-gateway-julianquino
       with:
