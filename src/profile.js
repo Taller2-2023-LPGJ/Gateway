@@ -5,14 +5,12 @@ const verifyToken = require('./middleware');
 const router = Router();
 
 router.use('/', async (req, res) => {
-    /*try{
+    try{
         var username = await verifyToken(req.headers.token);
     } catch(err){
         res.status(err.statusCode ?? 500).json({ message: err.message ?? 'An unexpected error has occurred. Please try again later.' });
         return;
-    }*/
-
-    username = 'gstfrenkel';
+    }
 
     try{
         const result = await axios({
