@@ -13,19 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v1
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          version: 'latest' # Puedes ajustar la versión según tus necesidades
-          installKubectl: true
+          node-version: '18'
 
-      - name: Set up Okteto CLI
-        run: |
-          curl https://get.okteto.com -sSfL | sh
-          sudo mv okteto /usr/local/bin
-
-      - name: Okteto login
-        run: okteto login --token ${{ secrets.OKTETO_TOKEN }}
+      - name: Install dependencies
+        run: npm install
 
       - name: Deploy to Okteto
         run: |
