@@ -4,8 +4,8 @@
   "description": "Dedicado al intermanejo de Requests entre microservicios",
   "main": "index.js",
   "scripts": {
-		"test": "jest --coverage"
-	},
+    "test": "jest --coverage"
+  },
   "author": "gstfrenkel",
   "license": "ISC",
   "dependencies": {
