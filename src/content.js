@@ -17,7 +17,6 @@ router.use('/', async (req, res) => {
 
         res.status(response.status).json(response.data);
     } catch(err){
-        console.log(err)
         if(axios.isAxiosError(err))
             res.status(err.response.status).json(err.response.data);
         else
