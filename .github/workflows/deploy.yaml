@@ -1,0 +1,21 @@
+# File: .github/workflows/deploy.yml
+on:
+  push:
+    branches:
+      - develop
+
+name: Deploy
+
+jobs:
+
+  devflow:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: okteto/context@latest
+      with:
+        url: https://cloud.okteto.com/spaces/snap-msg-auth-gateway-julianquino
+        token: ${{ secrets.OKTETO_TOKEN }}
+    
+    - name: "Build"
+      uses: okteto/build@latest
