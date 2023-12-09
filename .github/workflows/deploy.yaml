@@ -19,3 +19,5 @@ jobs:
     
     - name: "Build"
       uses: okteto/build@latest
+      with:
+        path: service
