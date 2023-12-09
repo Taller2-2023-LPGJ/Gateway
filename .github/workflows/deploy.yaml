@@ -18,5 +18,5 @@ jobs:
         token: ${{ secrets.OKTETO_TOKEN }}
     
     - name: "Build"
-      run: ls ../
+      run: ls ../../
       #uses: okteto/build@latest
