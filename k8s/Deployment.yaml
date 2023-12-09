@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t2-gateway-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: t2-gateway
+  template:
+    metadata:
+      labels:
+        app: t2-gateway
+    spec:
+      containers:
+      - name: t2-gateway
+        image: gstfrenkel/gateway-t2-gateway:latest
+        ports:
+        - containerPort: 3030
