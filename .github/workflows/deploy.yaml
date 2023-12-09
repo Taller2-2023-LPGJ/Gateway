@@ -21,3 +21,4 @@ jobs:
       uses: okteto/build@latest
       with:
         path: service
+        file: Deployment.yaml
