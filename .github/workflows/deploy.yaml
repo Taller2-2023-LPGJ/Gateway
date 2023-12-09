@@ -18,4 +18,6 @@ jobs:
         token: ${{ secrets.OKTETO_TOKEN }}
     
     - name: "Build"
+      run: |
+      pwd
       uses: okteto/build@latest
