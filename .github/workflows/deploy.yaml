@@ -7,6 +7,7 @@ on:
 name: Deploy
 
 jobs:
+
   devflow:
     runs-on: ubuntu-latest
     steps:
@@ -23,6 +24,7 @@ jobs:
 - name: "Create deployment"
       uses: okteto/apply@master
       with:
+        namespace: snap-msg-auth-profile-julianquino
         manifest: k8s
 
     - name: "Push changes"
