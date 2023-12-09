@@ -1,4 +1,4 @@
-# File: .github/workflows/deploy.yml
+# File: .github/workflows/deploy.yaml
 on:
   push:
     branches:
@@ -25,3 +25,4 @@ jobs:
       uses: okteto/push@latest
       with:
         namespace: snap-msg-auth-profile-julianquino
+        name: okteto.yaml
