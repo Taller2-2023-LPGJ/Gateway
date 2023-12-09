@@ -23,7 +23,7 @@ jobs:
 - name: "Create deployment"
       uses: okteto/apply@master
       with:
-        manifest: ./k8s/
+        manifest: k8s
 
     - name: "Push changes"
       uses: okteto/push@latest
