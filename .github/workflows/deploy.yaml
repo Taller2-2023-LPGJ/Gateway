@@ -25,4 +25,3 @@ jobs:
       uses: okteto/push@latest
       with:
         namespace: snap-msg-auth-profile-julianquino
-        name: okteto.yaml
