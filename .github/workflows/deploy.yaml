@@ -14,11 +14,8 @@ jobs:
     
     - uses: okteto/context@latest
       with:
-        url: https://cloud.okteto.com/spaces/snap-msg-auth-gateway-julianquino
+        url: sgsegesijgsenoignoiesgnoisenojgñesonik
         token: ${{ secrets.OKTETO_TOKEN }}
     
     - name: "Build"
       uses: okteto/build@latest
-      with:
-        path: service
-        file: okteto.yaml
