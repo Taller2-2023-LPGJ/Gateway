@@ -20,12 +20,10 @@ jobs:
       with:
         namespace: snap-msg-auth-profile-julianquino
     
-    - name: "Deploy application"
-      uses: okteto/apply@latest
+    - name: "Create deployment"
+      uses: okteto/apply@master
       with:
-        namespace: snap-msg-auth-profile-julianquino
-        working-directory: Gateway
-        manifest: okteto.yaml
+        manifest: ./k8s/
 
     - name: "Push changes"
       uses: okteto/push@latest
