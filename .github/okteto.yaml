@@ -1,0 +1,7 @@
+name: t2-gateway
+image: gstfrenkel/gateway-t2-gateway
+command: ["node", "server.js"]
+sync:
+  - .:/app
+forward:
+  - 3030:3030
