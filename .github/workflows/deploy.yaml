@@ -22,7 +22,7 @@ jobs:
         namespace: snap-msg-auth-profile-julianquino
     
     - name: "Create deployment"
-      uses: okteto/apply@master
+      uses: okteto/apply@develop
       with:
         namespace: snap-msg-auth-profile-julianquino
         manifest: k8s
