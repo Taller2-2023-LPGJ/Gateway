@@ -25,7 +25,6 @@ jobs:
       uses: okteto/apply@latest
       with:
         namespace: snap-msg-auth-profile-julianquino
-        manifest: deploy.yaml
 
     - name: "Push changes"
       uses: okteto/push@latest
