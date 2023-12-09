@@ -21,9 +21,9 @@ jobs:
     - name: "Activate Namespace"
       uses: okteto/namespace@latest
       with:
-        namespace: snap-msg-auth-profile-julianquino
+        namespace: snap-msg-auth-gateway-julianquino
 
     - name: "Push changes"
       uses: okteto/push@latest
       with:
-        namespace: snap-msg-auth-profile-julianquino
+        namespace: snap-msg-auth-gateway-julianquino
