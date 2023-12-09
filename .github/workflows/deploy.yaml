@@ -20,12 +20,6 @@ jobs:
       uses: okteto/namespace@latest
       with:
         namespace: snap-msg-auth-profile-julianquino
-    
-    - name: "Create deployment"
-      uses: okteto/apply@latest
-      with:
-        namespace: snap-msg-auth-profile-julianquino
-        manifest: ./k8s/
 
     - name: "Push changes"
       uses: okteto/push@latest
