@@ -39,6 +39,12 @@ jobs:
       with:
         namespace: snap-msg-auth-gateway-julianquino
 
+    - name: "Deploy Application"
+      uses: okteto/apply@latest
+      with:
+        namespace: snap-msg-auth-gateway-julianquino
+        manifest: k8s
+
     - name: "Push changes"
       uses: okteto/push@latest
       with:
